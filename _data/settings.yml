@@ -26,7 +26,7 @@ menu:
     submenu:
       - name: Books
         icon:
-        link: /pages/recommended-books.html
+        link: /recommended-books.html
       - name: Products
         icon:
-        link: /pages/recommended-products.html
+        link: /recommended-products.html
