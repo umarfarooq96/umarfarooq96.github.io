@@ -1,0 +1,35 @@
+---
+layout: default
+title: "Make Illegal States Unrepresentable"
+date: 2019-01-05 05:00:00 +0200
+published: 2019-01-05 05:00:00 +0200
+comments: true
+categories: development
+tags: [software, programming]
+github: "empty"
+---
+
+<p>
+    Illegal states suck. Having to check for null. Having to do weird things in weird cases. Having to gracefully fail. None of those are things we want to do. In this post I will try to 
+    share how to get around this problem.
+</p>
+<!--more-->
+
+<h2>The traditional</h2>
+
+<p>Below is a typical piece of code you may see. </p>
+
+{% highlight java %}
+
+public class Person {
+    private String firstName;
+    private String lastName;
+    private int age;
+    private Double weight;
+    
+    /*
+    ...
+     */
+}
+
+{% endhighlight %}
