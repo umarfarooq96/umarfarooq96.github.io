@@ -1,8 +1,8 @@
 ---
 layout: default
 title: "Make Illegal States Unrepresentable"
-date: 2019-01-05 05:00:00 +0200
-published: 2019-01-05 05:00:00 +0200
+date: 2020-01-05 05:00:00 +0200
+published: 2020-01-05 05:00:00 +0200
 comments: true
 categories: development
 tags: [software, programming]
@@ -11,7 +11,7 @@ github: "empty"
 
 <p>
     Illegal states suck. Having to check for null. Having to do weird things in weird cases. Having to gracefully fail. None of those are things we want to do. In this post I will try to 
-    share how to get around this problem.
+    share one way to get around this problem.
 </p>
 <!--more-->
 
@@ -20,16 +20,34 @@ github: "empty"
 <p>Below is a typical piece of code you may see. </p>
 
 {% highlight java %}
-
 public class Person {
     private String firstName;
     private String lastName;
     private int age;
     private Double weight;
     
-    /*
-    ...
-     */
+    /* ... */
 }
-
 {% endhighlight %}
+
+<h3>Primitive Obsession</h3> 
+
+Right off the bat, we can see a <a href="https://refactoring.guru/smells/primitive-obsession">primitive obsession code smell</a>. Is <code>firstName</code> distinguishable from <code>lastName</code>?
+Is there any "sensibiltiy" requirement to age? What does weight mean? Is it in kilograms or pounds?  
+
+
+
+
+
+
+
+
+
+But beyond this, imagine we do things with <code>Person</code>:
+
+{% highlight java %}
+public void reportLifeExpectancy(){
+    double expectedAged = age + (weight * WEIGHT_FACTOR) - (smoker ? cigarettesPerDay * SMOKER_FACTOR : 0);
+    System.out.println(firstName + " " + lastName + " will live to the age of " + expectedAged);
+}
+{% end highlight %}
