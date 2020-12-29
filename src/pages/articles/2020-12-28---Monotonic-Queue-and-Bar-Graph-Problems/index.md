@@ -1,5 +1,5 @@
 ---
-title: "Monotonic Queue and Largest Rectangle in Bar Graph Problem"
+title: "Monotonic Queue and Largest Rectangle in Bar Graph Problems"
 date: "2020-12-28T22:40:32.169Z"
 layout: post
 draft: false
@@ -15,7 +15,7 @@ description: "Using Monotonic queues to solve problems"
 Bar graph algorithm questions are tricky; visually we can see the entire 2D view and make quick optimal decisions. But algorithmically it seems like there is a lot of traversing...?
 Let's solve two such problems. 
 
-## Trapping Rain Water.
+## [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)
 **Given a bar graph, how much water can it trap?**
 
 ![A sample bar graph](./trapping_rain_water.png)
@@ -31,7 +31,7 @@ Here we can trap 6 "units" of water.
 
 **Algorithm**: At each *i*, find the maximum to the left, find the maximum to the right, get the minimum of those 2. Then, subtract out the height of *i* (this is "ground level" at position *i*). This is the water that can be trapped at *i*. To find the total, we simply sum all the water trapped at each *i*.
 
-## Largest Rectangle 
+## [Largest Rectangle](https://leetcode.com/problems/largest-rectangle-in-histogram/) 
 
 **Given a bar graph, what is the largest rectangle that can be made?**
 
@@ -142,6 +142,71 @@ And finally, the algorithm:
         return totalWaterTrapped;
     }
 ```
+
+<details>
+    <summary>Full leetcode compatible solution</summary>
+    
+Code that you can paste into LeetCode:
+
+```java
+    class Solution {
+        public int trap(int[] height) {
+            MaxToLeft maxToLeft = new MaxToLeft(height);
+            MaxToRight maxToRight = new MaxToRight(height);
+    
+            int totalWaterTrapped = 0;
+            for(int i = 0; i < height.length; i++){
+                int waterTrappedHere = Integer.min(maxToLeft.get(i), maxToRight.get(i)) - height[i];
+                totalWaterTrapped += waterTrappedHere;
+            }
+    
+            return totalWaterTrapped;
+        }
+    }
+
+    class MaxToLeft{
+
+        private final int[] processedItems;
+    
+        public MaxToLeft(int[] items) {
+            this.processedItems = new int[items.length];
+    
+            int maxSoFar = Integer.MIN_VALUE;
+            for(int i = 0; i < items.length; i++){
+                maxSoFar = Integer.max(items[i], maxSoFar);
+                processedItems[i] = maxSoFar;
+            }
+        }
+    
+        int get(int i){
+            return processedItems[i];
+        }
+
+    }
+
+    class MaxToRight{
+    
+        private final int[] processedItems;
+    
+        public MaxToRight(int[] items) {
+            this.processedItems = new int[items.length];
+    
+            int maxSoFar = Integer.MIN_VALUE;
+            for(int i = items.length-1; i >= 0 ; i--){
+                maxSoFar = Integer.max(items[i], maxSoFar);
+                processedItems[i] = maxSoFar;
+            }
+        }
+    
+        int get(int i){
+            return processedItems[i];
+        }
+    
+    }
+
+```
+
+</details>
 
 # Largest Rectangle
 
