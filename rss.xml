@@ -1,44 +1,250 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by Umar Farooq]]></title><description><![CDATA[A blog for professional curiosity (and sometimes personal curiosity).]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 29 Dec 2020 02:20:12 GMT</lastBuildDate><item><title><![CDATA[Monotonic Queue and Largest Rectangle in Bar Graph Problem]]></title><description><![CDATA[Using Monotonic queues to solve problems]]></description><link>http://umarfarooq.ca//posts/remote-work-yay-or-nay/</link><guid isPermaLink="false">http://umarfarooq.ca//posts/remote-work-yay-or-nay/</guid><pubDate>Mon, 28 Dec 2020 22:40:32 GMT</pubDate><content:encoded>&lt;p&gt;Here&lt;/p&gt;
-&lt;!---
-**Pellentesque habitant morbi tristique** senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. *Aenean ultricies mi vitae est.* Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. 
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog by Umar Farooq]]></title><description><![CDATA[A blog for professional curiosity (and sometimes personal curiosity).]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 29 Dec 2020 08:42:55 GMT</lastBuildDate><item><title><![CDATA[Monotonic Queue and Largest Rectangle in Bar Graph Problem]]></title><description><![CDATA[Using Monotonic queues to solve problems]]></description><link>http://umarfarooq.ca//posts/monotonic-queue-largest-rectangle/</link><guid isPermaLink="false">http://umarfarooq.ca//posts/monotonic-queue-largest-rectangle/</guid><pubDate>Mon, 28 Dec 2020 22:40:32 GMT</pubDate><content:encoded>&lt;p&gt;Bar graph algorithm questions are tricky; visually we can see the entire 2D view and make quick optimal decisions. But algorithmically it seems like there is a lot of traversing…?
+Let’s solve two such problems. &lt;/p&gt;
+&lt;h2&gt;Trapping Rain Water.&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Given a bar graph, how much water can it trap?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/2e837068182755a91a8e6e701b5fee2c/9e32a/trapping_rain_water.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 412px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 39.166666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsSAAALEgHS3X78AAABH0lEQVQY02N4//79ly9f/uMFf//+/fPnz79//9DEGZ4/f/7x48f/ZAGGp0+f4LEZYtvGjRt6enp+/PgBF0HY/PnzZ4jbgBJA/AcK/v75+/fnr99AqcDAQGZm5jdv3gDZv3/DpP/+ZXj27ClcM5B89OiRiaGub1x53tRT6Z0707t2FUw7pW7iysjAoK+r5R2ZmzfluKWDV0hQAMhmoGage4CmHjx44Nq9F5v2nGRgYBBTszGN6LZNX2STMs84tE1EwYABDIQUjE3COpi5hGWlJU+cPMnw8OFDoPumTZ8OlJOxzdYM6maAAU3/FmWXIhCLkZEBK3jz9s2HDx/OnDnb29uzZP2+FdtOTJ48eRIYLN9yfMmGAxMnTJgMAxBxOBsAjddS0B8FLXwAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;A sample bar graph&quot;
+        title=&quot;&quot;
+        src=&quot;/static/2e837068182755a91a8e6e701b5fee2c/9e32a/trapping_rain_water.png&quot;
+        srcset=&quot;/static/2e837068182755a91a8e6e701b5fee2c/8ff5a/trapping_rain_water.png 240w,
+/static/2e837068182755a91a8e6e701b5fee2c/9e32a/trapping_rain_water.png 412w&quot;
+        sizes=&quot;(max-width: 412px) 100vw, 412px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;Here we can trap 6 “units” of water.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Claim&lt;/strong&gt;: For any &lt;em&gt;i&lt;/em&gt;, the amount of water held at &lt;em&gt;i&lt;/em&gt; is “bounded” by the minimum of the maximum heights on the left and on the right.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;: This image of a counter example should make it clear:&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/ffc5a74a3224356d054470963591c3c7/fa5c1/trapping_rain_water_counter_proof.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 422px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 37.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsSAAALEgHS3X78AAABTklEQVQY02N4//79//////37ByE/fvz49evX/0jg79+/v3//hihAAwxPnz6FqACSQJ1KSkoJiUlA9p8/f/4TAgzPnz+Ha3779i0jI6OHhyeQ/fv3n79/QbZdvHhx6tQpL168ACv7BwFQzTBRkOZ3794xM7N4eXlCbIZY3tXVycDAcOLECUznoNj85u07Xh5OZV2bmgXniyfvL560r2bBOaeQHKBmM1OTgNCYijmnozNrXZ0dHj95AtL88uXLX79+3blz5+WbD9fvPhHk5xGSM7BOnmOTttAuc5lV8hxF00BGBhBg4xGxSpkrpm4PZO/evQcY0gxfvnzZtWs3kK9sn2qevJCBkRmskkHNrcgsfiYDNsDExAQkLS0tGZ49e3by5Mn0tJTWiYsnLD5YUlpWWFhYkJ/bMW31hEV7gUwgtwgGgFwgUVxckpmZOXHiRAC+5j14JV3RDQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;counter example&quot;
+        title=&quot;&quot;
+        src=&quot;/static/ffc5a74a3224356d054470963591c3c7/fa5c1/trapping_rain_water_counter_proof.png&quot;
+        srcset=&quot;/static/ffc5a74a3224356d054470963591c3c7/8ff5a/trapping_rain_water_counter_proof.png 240w,
+/static/ffc5a74a3224356d054470963591c3c7/fa5c1/trapping_rain_water_counter_proof.png 422w&quot;
+        sizes=&quot;(max-width: 422px) 100vw, 422px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Algorithm&lt;/strong&gt;: At each &lt;em&gt;i&lt;/em&gt;, find the maximum to the left, find the maximum to the right, get the minimum of those 2. Then, subtract out the height of &lt;em&gt;i&lt;/em&gt; (this is “ground level” at position &lt;em&gt;i&lt;/em&gt;). This is the water that can be trapped at &lt;em&gt;i&lt;/em&gt;. To find the total, we simply sum all the water trapped at each &lt;em&gt;i&lt;/em&gt;.&lt;/p&gt;
+&lt;h2&gt;Largest Rectangle&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Given a bar graph, what is the largest rectangle that can be made?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/dc4406bb965d19b27a416a4ad4c1bdbc/4dcb9/largest_rectangle.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 188px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 108.51063829787235%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWCAIAAABPIytRAAAACXBIWXMAAAsSAAALEgHS3X78AAACSklEQVQ4y42T626jMBCF8/7PtX+6WqmbqgmE4BsXYzuEUsAGk1J2bEfpSptuawk0gL85Z8bDZv18vfsbIXSy890Nm/uYW4uHl4eHn12vw8tvwWFdLheMiTopjFFViX/5zb+acH9pzilCdrZlWcKj1pr74Fvw62ubpMhayzm/wlX1NQxrmia0f2orhvbb7cOPuiBo98hw6uHlc9gnBp0K7VfbGsUk2q1zN9a5LLMvld03Y4yiyTq15pQrEq1zb+pSFOwr2H8zWkt6WO0rwJLE62UwZy7+Ul6W9xDcVdaKxgDrUyFwtF6MqQHOv6dstCSH4NYFADdCetvL4hrGKKnPzX+Uk3V2biUEy+iy8OIGE4xUfb7CSygCZK/KRrLjetEa3ELwpkG5ymlIn6YpyzIp5fPzs4OTJJbqdCvJ2WYpwKaRrnPLBFkaJZLk8NK2gE3WwjYYvg0Ax2NSlrxt2+DK2QbYM4KCshmbiqQH0BRCYoztDa6qqmmaYRiEEEqpMCQyw+6EQJkl0LCpPdH0oM3YdR3A8zxfYbhgHr3gmFPEhRrH0dl+G81ZOPjduqPy3Q7MhzKMPuz2ggYGmLIcAkEBNhpmw2UxrttFFuCiKD7gm3Lf99vttq5raAEniWNelLc9uHPm+X3lALtSpfTBIDP4h2ZgBIwn2IagvCrD/gBDsMnzHA4WHqAZ4dfvu46Dbdv1knEUrXaAZJyhADPGQplZlm3AJyEEMIRQFEWQD4L9718iwzSJ4qfHKsMs2R3jfVGUUPBut6OUQhDH8R+xied4RDRhLQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;A sample bar graph&quot;
+        title=&quot;&quot;
+        src=&quot;/static/dc4406bb965d19b27a416a4ad4c1bdbc/4dcb9/largest_rectangle.png&quot;
+        srcset=&quot;/static/dc4406bb965d19b27a416a4ad4c1bdbc/4dcb9/largest_rectangle.png 188w&quot;
+        sizes=&quot;(max-width: 188px) 100vw, 188px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;Here, the largest triangle is shown above with an area of 10 (2x5).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Claim&lt;/strong&gt;: Our answer will include at least one “entire bar”.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;: Counter example, say we have an answer that doesn’t include any entire bar. &lt;/p&gt;
+&lt;p&gt;The height bound of the rectangle is the maximum height of the bars it includes.
+We don’t have any entire bars which means we are at least 1 unit less than the maximum.
+The rectangle that contains this entire bar is also valid and has a larger area.
+Thus, the original answer is incorrect.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/e4c4df099c63e8df5087b2d855782734/2bf95/largest_rectangle_counter_proof.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 194px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 107.21649484536083%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAIAAADJt1n/AAAACXBIWXMAAAsSAAALEgHS3X78AAACGUlEQVQ4y5WT2ZKbMBBF/f+flqeZOGA2s4lFEhKLwIAxNrkgx5VyPBWPHlQS9FHf3nbLF+t2u2FvlSJJ8rg+rd1XpLZmjH58fn4bxl6WJSFECBGGYdu2/z6xe4n5R4/xQgpxOp1wbZqmKIp34SxNeVFkWfaApZT/gfU/6IziuKqq/X7f972G8fEtGAqVUlu22DAM34M555SxaZp834daHBjn78IoT2T9VCy2Pn6kntnQmHjW2zEXvGXhMnc8soYqw6EVafkHnucZWnQjaPj2NywLpvJwOTfsaPRFsoxKsURKoW1qyU3L1sYvPEt4pivMA2uQ2TJ1it9hJJ/EMUqIXHZdt8JScNV2z/DU8tAeSopDJ/MsJVvOZZqml8uE/CVJssKefUgyisP1er3DLF4uHQudocyXy6krmWsZrucLWdZVBZtxHPM830FJEAQF52hgKNkSxlpGlvnEVs9smfuaEtM00TaWZdV1DRvUf4XR8QhAjwGCGc/nUvCWJ3DII2+oOA6qyHSpsGv47vkBI6Qw8CNCmrpGkZd5YKG7er70LU/FNhgI9RlGS+kfpmGgmUzjl+LpCkfuUAHulKC6w1541jBk67ljNIer5brB8HwdcdWleoYxA1q23NY6GJyhsMgTDew15qlVjKDttLpqyzYShgTtMLG2bYN3twXZ1sE8HvZFGln7j9g9cBIEtmE7Dmwcx/E8j1KK0uCh327DsBX4ZraFAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;counter example&quot;
+        title=&quot;&quot;
+        src=&quot;/static/e4c4df099c63e8df5087b2d855782734/2bf95/largest_rectangle_counter_proof.png&quot;
+        srcset=&quot;/static/e4c4df099c63e8df5087b2d855782734/2bf95/largest_rectangle_counter_proof.png 194w&quot;
+        sizes=&quot;(max-width: 194px) 100vw, 194px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Algorithm&lt;/strong&gt;: At each &lt;em&gt;i&lt;/em&gt;, we get the answer using this entire bar at &lt;em&gt;i&lt;/em&gt;. We need the first element less than &lt;em&gt;i&lt;/em&gt; to the left and the first element less than &lt;em&gt;i&lt;/em&gt; to the right. That gives us the span (width) of this answer. The height of this answer is simply &lt;em&gt;i&lt;/em&gt;. We multiply to find the answer.&lt;/p&gt;
+&lt;h2&gt;Monotonic Queue&lt;/h2&gt;
+&lt;p&gt;A monotonic queue is a data structure that preserves a monotonic sequence. &lt;/p&gt;
+&lt;p&gt;In early calculus, you learn about monotonically increasing or decreasing functions:&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/aeb1859691cbd10c3b683a1dd9a99121/5d030/mono_functions.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 771px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 36.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAIAAACHqfpvAAAACXBIWXMAAAsSAAALEgHS3X78AAABFklEQVQY0y1PiY6DIBDl/3+waamK7a5RFBEQD67Zp9kJCbxjHjOMv3nOOYSQczyPOE47UXk+G60PohRCRJ3nmVJ4PGrnYikppQiPtY4ty0JEOYMj70mpAEEpN88XkzNESikjAaS1FzzP4hzMns1aA2tdcIPCCKVAM94XxCpFMSIi43NjDGAphFxjaBw9M3bZd7K20F0YEs0WuFxMCMj9b3bOHgdJeZkxkZSe/XYKMnrSXc45WLHLtWtM2HD1pe89mrVeck7HkcAjt6oU+35/ZqVwpmnq+14IAQEPKeU0qUHKcZRV1SBxGICk1mq8q65r5tf1035EI/jr1QixYwciawxSRNOA5O9qu8lt27qua1vBOReixZh/jaaPO+xL+csAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;mono functions&quot;
+        title=&quot;&quot;
+        src=&quot;/static/aeb1859691cbd10c3b683a1dd9a99121/5d030/mono_functions.png&quot;
+        srcset=&quot;/static/aeb1859691cbd10c3b683a1dd9a99121/8ff5a/mono_functions.png 240w,
+/static/aeb1859691cbd10c3b683a1dd9a99121/e85cb/mono_functions.png 480w,
+/static/aeb1859691cbd10c3b683a1dd9a99121/5d030/mono_functions.png 771w&quot;
+        sizes=&quot;(max-width: 771px) 100vw, 771px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;This is essentially what we are trying to preserve. In most cases we also want strictly increasing or decreasing.&lt;/p&gt;
+&lt;p&gt;A general structure can be:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MonotonicQueue&lt;/span&gt;&lt;span class=&quot;token generics&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Item&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Item&lt;/span&gt; item&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
-Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.  [Donec non enim](#) in turpis pulvinar facilisis.
+    &lt;span class=&quot;token class-name&quot;&gt;Item&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
-![Nulla faucibus vestibulum eros in tempus. Vestibulum tempor imperdiet velit nec dapibus](./1.jpg)
+    &lt;span class=&quot;token class-name&quot;&gt;Item&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;peek&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Back to Trapping Rain Water&lt;/h2&gt;
+&lt;p&gt;We can implement this algorithm with two monotonic queues. One to find maximum to the left, one to find maximum to the right.
+For simplicity, we’re going to work with int’s here as we only care about the indices (we can get the heights from the array in O(1) so no need to store).&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MaxToLeft&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; processedItems&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
-## Header Level 2
+    &lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MaxToLeft&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; items&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;processedItems &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;items&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
-+ Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-+ Aliquam tincidunt mauris eu risus.
+        &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; maxSoFar &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;MIN_VALUE&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; items&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+            maxSoFar &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;items&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; maxSoFar&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            processedItems&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; maxSoFar&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 
-Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. 
+    &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; i&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; processedItems&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And similarily:
+&lt;br&gt;
+&lt;sub&gt;&lt;sup&gt;Note: in this case we could have simply re-used &lt;code class=&quot;language-text&quot;&gt;MaxToLeft&lt;/code&gt; and reversed our input. But for clarify, it is explicitly given.&lt;/sup&gt;&lt;/sub&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MaxToRight&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
 
-&lt;figure&gt;
-	&lt;blockquote&gt;
-		&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.&lt;/p&gt;
-		&lt;footer&gt;
-			&lt;cite&gt;— Aliquam tincidunt mauris eu risus.&lt;/cite&gt;
-		&lt;/footer&gt;
-	&lt;/blockquote&gt;
-&lt;/figure&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; processedItems&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
-### Header Level 3
+    &lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MaxToRight&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; items&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;processedItems &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;items&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
-+ Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-+ Aliquam tincidunt mauris eu risus.
+        &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; maxSoFar &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;MIN_VALUE&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; items&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i&lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+            maxSoFar &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;items&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; maxSoFar&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            processedItems&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; maxSoFar&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
+    &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; i&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; processedItems&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And finally, the algorithm:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;    &lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;trap&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; height&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token class-name&quot;&gt;MaxToLeft&lt;/span&gt; maxToLeft &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MaxToLeft&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;height&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token class-name&quot;&gt;MaxToRight&lt;/span&gt; maxToRight &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MaxToRight&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;height&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
-```css
-#header h1 a {
-  display: block;
-  width: 300px;
-  height: 80px;
-}
-```
+        &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; totalWaterTrapped &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; height&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; waterTrappedHere &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;maxToLeft&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; maxToRight&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; height&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            totalWaterTrapped &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; waterTrappedHere&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 
-Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.
----&gt;</content:encoded></item><item><title><![CDATA[Remote work, yay or nay?]]></title><description><![CDATA[Exploring the principles of compensation with regard to remote work]]></description><link>http://umarfarooq.ca//posts/remote-work-yay-or-nay/</link><guid isPermaLink="false">http://umarfarooq.ca//posts/remote-work-yay-or-nay/</guid><pubDate>Sat, 26 Sep 2020 22:40:32 GMT</pubDate><content:encoded>&lt;p&gt;The COVID-19 pandemic has brought in a forced remote work policy to all tech companies. The nature of our work is such that remote work is very frictionless. But, this has given many companies a good question: is permanent remote work possible, feasible or even preferable? In this article I will try to navigate this question and present various arguments and attitudes on this topic.  &lt;/p&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; totalWaterTrapped&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;Largest Rectangle&lt;/h1&gt;
+&lt;p&gt;The largest rectangle is left as an exercise :) &lt;/p&gt;</content:encoded></item><item><title><![CDATA[Remote work, yay or nay?]]></title><description><![CDATA[Exploring the principles of compensation with regard to remote work]]></description><link>http://umarfarooq.ca//posts/remote-work-yay-or-nay/</link><guid isPermaLink="false">http://umarfarooq.ca//posts/remote-work-yay-or-nay/</guid><pubDate>Sat, 26 Sep 2020 22:40:32 GMT</pubDate><content:encoded>&lt;p&gt;The COVID-19 pandemic has brought in a forced remote work policy to all tech companies. The nature of our work is such that remote work is very frictionless. But, this has given many companies a good question: is permanent remote work possible, feasible or even preferable? In this article I will try to navigate this question and present various arguments and attitudes on this topic.  &lt;/p&gt;
 &lt;p&gt;Reiterating the problem statement: should we move to permanent remote work? The first question here should be: why? Here are some reasons which I will propose as questions and then dive deeper into each (ranked from least interesting to most interesting):&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;It is more economical?&lt;/li&gt;
