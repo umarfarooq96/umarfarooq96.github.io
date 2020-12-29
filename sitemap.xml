@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 <url> <loc>http://umarfarooq.ca/about</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://umarfarooq.ca/contact</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://umarfarooq.ca/posts/remote-work-yay-or-nay/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://umarfarooq.ca/tags/remote-work/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://umarfarooq.ca/tags/compensation/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://umarfarooq.ca/tags/cost-of-living/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://umarfarooq.ca/categories/ramblings/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://umarfarooq.ca/posts/monotonic-queue-largest-rectangle/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://umarfarooq.ca/tags/algorithms/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://umarfarooq.ca/tags/monotonic-queue/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://umarfarooq.ca/tags/leet-code/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://umarfarooq.ca/categories/algorithms/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://umarfarooq.ca/posts/remote-work-yay-or-nay/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://umarfarooq.ca/tags/remote-work/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://umarfarooq.ca/tags/compensation/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://umarfarooq.ca/tags/cost-of-living/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://umarfarooq.ca/categories/ramblings/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://umarfarooq.ca/categories/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://umarfarooq.ca/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://umarfarooq.ca/tags/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
